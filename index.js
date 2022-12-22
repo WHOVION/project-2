@@ -1,4 +1,4 @@
-// require packages
+// required packages
 require('dotenv').config()
 const express = require('express')
 const cookieParser = require('cookie-parser')
@@ -23,37 +23,39 @@ app.use(async (req, res, next) => {
             // decrypt the user id and turn it into a string
             const decryptedId = crypto.AES.decrypt(req.cookies.userId, process.env.SECRET)
             const decryptedString = decryptedId.toString(crypto.enc.Utf8)
-        // the user is logged in, lets find them in the db
-        const user = await db.user.findByPk(decryptedString)
-        // mount the logged in user on the res.locals
-        res.locals.user = user
+            // the user is logged in, lets find them in the db
+            const user = await db.user.findByPk(decryptedString)
+            // mount the logged in user on the res.locals
+            res.locals.user = user
         } else {
-            // set the logged in user to the null for conditional rendering
+            // set the logged in user to be null for conditional rendering
             res.locals.user = null
         }
-        // move on the next middleware/route
+
+        // move on the the next middleware/route
         next()
-    } catch (error) {
-        console.log('error in auth middleware', error)
+    } catch (err) {
+        console.log('error in auth middleware: 🔥🔥🔥🔥', err)
         // explicity set user to null if there is an error
         res.locals.user = null
-        next() // got to next thing
+        next() // go to the next thing
     }
 })
 
-// example custom middelware (incoming request logger)
-app.use ((req, res, next) => {
-    // are code goes here
-    // console.log('hello from inside the middleware')
+// example custom middleware (incoming request logger)
+app.use((req, res, next) => {
+    // our code goes here
+    // console.log('hello from inside of the middleware!')
     console.log(`incoming request: ${req.method} - ${req.url}`)
-    // res.locals are a place where we can put data to share with 'downstream routes'
-    // res.locals.myData = 'hello i am data'
+    // res.locals are a place that we can put data to share with 'downstream routes'
+    // res.locals.myData = 'hello I am data'
     // invoke next to tell express to go to the next route or middle
     next()
 })
 
 // routes and controllers
 app.get('/', (req, res) => {
+    console.log(res.locals.user)
     res.render('home.ejs', {
         user: res.locals.user
     })
@@ -61,7 +63,7 @@ app.get('/', (req, res) => {
 
 app.use('/users', require('./controllers/users'))
 
-// listen on port
+// listen on a port
 app.listen(PORT, () => {
-    console.log(`autheticating users on PORT ${PORT}`)
+    console.log(`authenticating users on PORT ${PORT} 🔐`)
 })

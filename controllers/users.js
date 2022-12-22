@@ -1,4 +1,4 @@
-// create an instance of express router
+// create an instance of express routers
 const express = require('express')
 const db = require('../models')
 const router = express.Router()
@@ -14,7 +14,7 @@ router.get('/new', (req, res) => {
     })
 })
 
-//POST /users -- creates a new user from the form @ /users/new
+// POST /users -- creates a new user from the form @ /users/new
 router.post('/', async (req, res) => {
     try {
         // based on the info in the req.body, find or create user
@@ -22,29 +22,30 @@ router.post('/', async (req, res) => {
             where: {
                 email: req.body.email
             }
-        })
+        }) 
         // if the user is found, redirect user to login
-        if(!created) {
-            console.log('user exists')
-            res.redirect('/users/login?message=Please log in to continue')
+        if (!created) {
+            console.log('user exists!')
+            res.redirect('/users/login?message=Please log in to continue.')
         } else {
             // here we know its a new user
-            // hash th supplied password
+            // hash the supplied password
             const hashedPassword = bcrypt.hashSync(req.body.password, 12)
             // save the user with the new password
-            newUser.password - hashedPassword
-            await newUser.save() // actually save the new password in the db
-            // ecrypt the users id and convert it to a string
+            newUser.password = hashedPassword
+            await newUser.save() // actually save the new password in th db
+            // ecrypt the new user's id and convert it to a string
             const encryptedId = crypto.AES.encrypt(String(newUser.id), process.env.SECRET)
             const encryptedIdString = encryptedId.toString()
             // place the encrypted id in a cookie
             res.cookie('userId', encryptedIdString)
-            // redirect to users profile
+            // redirect to user's profile
             res.redirect('/users/profile')
         }
-    } catch (error) {
-        console.log(error)
-        res.status(500).send('Server Error')
+
+    } catch (err) {
+        console.log(err)
+        res.status(500).send('server error')
     }
 })
 
@@ -66,7 +67,7 @@ router.post('/login', async (req, res) => {
             }
         })
         // boilerplate message if login fails
-        const badCredentialMessage = 'email or password incorrect'
+        const badCredentialMessage = 'username or password incorrect'
         if (!user) {
             // if the user isn't found in the db 
             res.redirect('/users/login?message=' + badCredentialMessage)
@@ -75,9 +76,9 @@ router.post('/login', async (req, res) => {
             res.redirect('/users/login?message=' + badCredentialMessage)
         } else {
             // if the user is found and their password matches log them in
-            console.log('loggin user in!')
-            // ecrypt the users id and convert it to a string
-            const encryptedId = crypto.AES.encrypt(String(newUser.id), process.env.SECRET)
+            console.log('logging user in!')
+            // ecrypt the new user's id and convert it to a string
+            const encryptedId = crypto.AES.encrypt(String(user.id), process.env.SECRET)
             const encryptedIdString = encryptedId.toString()
             // place the encrypted id in a cookie
             res.cookie('userId', encryptedIdString)
