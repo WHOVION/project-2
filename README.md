@@ -12,17 +12,19 @@ dotify is a music app that allows users to favorite songs and add them to their 
 * (https://api.spotify.com/) (need help to see if api has limited request)
 
 ### ERD
-![ERD](https://imgur.com/J2ZrLSX.png)
+![ERD](src="./img/ERD.png")
 
 ### RestFul Routing chart
-![RRC](https://imgur.com/4Ztng3M.png)
+![RRC](src="./img/Routes.png")
 
 ### Wireframe
 ![Wireframe](https://imgur.com/IUL0M0i.png)
 
 ### User Story 
 
-As a user, I would live to be able to see a list full of songs and be able to add songs I like to my favorites playlist. I would also like to be able to click a song and see info about and see comments other users have made.
+* As a user, I would live to be able to see a list full of songs 
+* As a user, I would like to be able to add songs I like to my favorites playlist. 
+* As a user, I would like to be able to click a song and see info about and see comments other users have made.
 
 ### MVP 
 
