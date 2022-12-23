@@ -9,7 +9,7 @@ dotify is a music app that allows users to favorite songs and add them to their 
 * Node 
 * express
 * sql
-* (https://www.last.fm/api/intro/)
+* (https://itunes.apple.com/us/rss/topsongs/limit=100/json/)
 
 ### ERD
 ![ERD](./img/ERD.png)
