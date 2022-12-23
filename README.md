@@ -12,10 +12,10 @@ dotify is a music app that allows users to favorite songs and add them to their 
 * (https://api.spotify.com/) (need help to see if api has limited request)
 
 ### ERD
-![ERD](src="./img/ERD.png")
+![ERD](./img/ERD.png)
 
 ### RestFul Routing chart
-![RRC](src="./img/Routes.png")
+![RRC](./img/Routes.png)
 
 ### Wireframe
 ![Wireframe](https://imgur.com/IUL0M0i.png)
