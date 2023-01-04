@@ -82,7 +82,7 @@ router.post('/login', async (req, res) => {
             const encryptedIdString = encryptedId.toString()
             // place the encrypted id in a cookie
             res.cookie('userId', encryptedIdString)
-            res.redirect('/users/profile')
+            res.redirect('songs.ejs')
         }
     } catch (err) {
         console.log(err)
@@ -109,6 +109,8 @@ router.get('/profile', (req, res) => {
         })
     }
 })
+
+
 
 // export the router
 module.exports = router

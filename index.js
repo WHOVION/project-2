@@ -1,6 +1,7 @@
 // required packages
 require('dotenv').config()
 const express = require('express')
+const axios = require('axios'); 
 const cookieParser = require('cookie-parser')
 const db = require('./models')
 const crypto = require('crypto-js')
@@ -61,7 +62,22 @@ app.get('/', (req, res) => {
     })
 })
 
+// app.get('/', (req, res) => {
+//     let apiURL = 'https://itunes.apple.com/us/rss/topsongs/limit=100/json';
+//     // Use request to call the API
+//     axios.get(apiURL).then(apiResponse => {
+//       let songs = apiResponse.data.feed.entry;
+//       console.log(apiResponse.data.feed.entry)
+//       res.render('songs.ejs', { songs: songs });
+//     })
+//   });
+
+
+
 app.use('/users', require('./controllers/users'))
+app.use('/songs', require('./controllers/songs'))
+app.use('/favorites', require('./controllers/faves') )
+
 
 // listen on a port
 app.listen(PORT, () => {

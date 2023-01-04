@@ -1,0 +1,21 @@
+home page:
+home page after loggin in should be a new one. nav bar includes, home favorites (user email-not clickable). Top right should have logout
+
+home page has list of songs. Song image, name, artist. Button to add to favorites
+
+clicking add to favorites, adds song to favorite and switches page to favorites page
+
+favs page: 
+see all favorited songs, next to it has remove Button
+
+songs also have button that says details
+
+
+details page:
+once you are in details of a song, you see info about it(will choose later), and in bottom will have comment section
+
+top of comment section has input and send button
+
+under that has a box of comments(username top, comment under)
+
+next to username has a remove button to remove comment

@@ -44,3 +44,5 @@ dotify is a music app that allows users to favorite songs and add them to their 
 * Be able to play song potentially
 * Make different playlist
 * Button that you click to show artist or songs in the same genre
+* Button that creates a link thats has all your name and favorited songs so you can share with friends
+* Add fake memberships page
