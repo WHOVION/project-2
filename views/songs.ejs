@@ -1,3 +1,6 @@
+<%- include('../views/partials/header.ejs', { user }) %>
+
+<div>
 <% songs.forEach(function(song) { %>
     <div class="well">
       <h2><%= song['im:name'].label %></h2>
@@ -8,3 +11,7 @@
     </div>
   <% }); %>
 </div>
+
+
+
+

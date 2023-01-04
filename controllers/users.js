@@ -4,8 +4,11 @@ const db = require('../models')
 const router = express.Router()
 const crypto = require('crypto-js')
 const bcrypt = require('bcrypt')
+const axios = require('axios'); 
 
 // mount our routes on the router
+
+// GET renders ejs 
 
 // GET /users/new -- serves a form to create a new user
 router.get('/new', (req, res) => {
@@ -40,7 +43,8 @@ router.post('/', async (req, res) => {
             // place the encrypted id in a cookie
             res.cookie('userId', encryptedIdString)
             // redirect to user's profile
-            res.redirect('/users/profile')
+            // res.redirect('/users/profile')
+            res.redirect('/songs')
         }
 
     } catch (err) {
@@ -58,6 +62,7 @@ router.get('/login', (req, res) => {
 })
 
 // POST /users/login -- ingest data from form rendered @ GET /users/login
+// render is ej
 router.post('/login', async (req, res) => {
     try {
         // look up the user based on their email
@@ -82,7 +87,7 @@ router.post('/login', async (req, res) => {
             const encryptedIdString = encryptedId.toString()
             // place the encrypted id in a cookie
             res.cookie('userId', encryptedIdString)
-            res.redirect('songs.ejs')
+            res.redirect('/songs')
         }
     } catch (err) {
         console.log(err)
@@ -109,6 +114,16 @@ router.get('/profile', (req, res) => {
         })
     }
 })
+
+// router.get('/songs', (req, res) => {
+//   let apiURL = 'https://itunes.apple.com/us/rss/topsongs/limit=100/json';
+//   // Use request to call the API
+//   axios.get(apiURL).then(apiResponse => {
+//     let songs = apiResponse.data.feed.entry;
+//     // console.log(apiResponse.data.feed.entry)
+//     res.render('songs.ejs', { songs: songs });
+//   })
+// });
 
 
 

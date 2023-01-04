@@ -3,6 +3,8 @@ const router = express.Router();
 const db = require('../models')
 const axios = require('axios')
 
+// GET add user: res.locals.user
+
 // GET /favorites - return a page with favorite songs
 // READ function to find all favorited songs
 router.get('/', async (req, res) => {
@@ -18,7 +20,8 @@ router.get('/', async (req, res) => {
   });
   
   // POST /favorites - receive the name of the song and add it to database
-  // POST is Update
+  // POST is add
+  // PUT is update
   router.post('/', async (req, res) => {
     try {
       const songs = await db.songs.findOrCreate({
@@ -39,9 +42,10 @@ router.get('/', async (req, res) => {
     try {
       const url = `https://itunes.apple.com/us/rss/topsongs/limit=100/json${req.params.name}`
       const response = await axios.get(url)
-      res.render('.ejs', {
+      res.render('faves.ejs', {
         songs: response.data,
-        name: req.params.name
+        name: req.params.name,
+        user: res.locals.user
       })
       // console.log(response.data)
     } catch (error) {
@@ -52,6 +56,6 @@ router.get('/', async (req, res) => {
 
 
 
-
+  
 
 module.exports = router;
