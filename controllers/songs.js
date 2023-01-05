@@ -17,12 +17,13 @@ router.get('/', (req, res) => {
 });
 
 // GET /songs/songName
-router.get('/', async (req, res) => {
+// since this is a bracket notation, how to i make name as param
+router.get('/:name', async (req, res) => {
   try {
-    const url = `http://pokeapi.co/api/v2/pokemon/${req.params.name}`
+    const url = `https://itunes.apple.com/us/rss/topsongs/limit=100/json${req.params.name}`
     const response = await axios.get(url)
-    res.render('show.ejs', {
-      pokemons: response.data,
+    res.render('details.ejs', {
+      songs: response.data.feed.entry,
       name: req.params.name
     })
     // console.log(response.data)

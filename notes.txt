@@ -24,14 +24,20 @@ things to remember:
 
 GET renders ejs. Render takes ejs
 res.redirect sends you to new route(url) 
+ejs files don't take comments
 
 
-<!-- <-- song image, song name, artist name 
-<-- <img src="<%= song['im:image[0]'.label %>" />  
-<h2><%= song['im:name'].label %></h2>
-<h4><%= song['im:artist'].label %></h4>  -->
 
-      <h2><%= song['im:name'].label %></h2>
-      <h4><%= song['im:artist'].label %></h4>
+Questions:
+
+Creating models. user, user favorites(removing favorites from models), song model for comments 
+
+Is it easier to make comments linked with user and only user can delete or is it better once comment is made its there.
+Better to have user input name or can I automatically add it?
+
+For details, we need song name, how do i make params song name since its weird notation?
+
+
+
 
 
