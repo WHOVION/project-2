@@ -1,7 +1,27 @@
-<%- include('../partials/header', { user }) %>
+<%- include('../views/partials/header.ejs', { user }) %>
 
-<h1>Your Favorites</h1>
 
-<p>List of favorites</p>
+<div>
+    <h1>Your Favorites</h1>
+    <% favSong.forEach(function(song) { %>
+        <div class="well">
+          <img src="<%= song['im:image'][2].label %>" />  
+          <h2><%= song['im:name'].label %></h2>
+          <h4><%= song['im:artist'].label %></h4>
+          <form method="DELETE" action="/favorites">
+            <input hidden type="text" name="name" value="<%= song.name %>">
+            <button class="btn btn-primary" type="submit">Remove</button>
+          </form>
+          <form method="GET" action="/songs">
+            <input hidden type="text" name="name" value="<%= song.name %>">
+            <button class="btn btn-primary" type="submit">See more info</button>
+          </form>
+        </div>
+      <% }); %>
+    </div>
 
-<%- include('../partials/footer') %>
+
+
+
+
+<%- include('../views/partials/footer.ejs') %>

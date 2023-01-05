@@ -42,8 +42,7 @@ router.post('/', async (req, res) => {
             const encryptedIdString = encryptedId.toString()
             // place the encrypted id in a cookie
             res.cookie('userId', encryptedIdString)
-            // redirect to user's profile
-            // res.redirect('/users/profile')
+            // if new user makes an account, send them to /songs(main page)
             res.redirect('/songs')
         }
 
@@ -115,15 +114,6 @@ router.get('/profile', (req, res) => {
     }
 })
 
-// router.get('/songs', (req, res) => {
-//   let apiURL = 'https://itunes.apple.com/us/rss/topsongs/limit=100/json';
-//   // Use request to call the API
-//   axios.get(apiURL).then(apiResponse => {
-//     let songs = apiResponse.data.feed.entry;
-//     // console.log(apiResponse.data.feed.entry)
-//     res.render('songs.ejs', { songs: songs });
-//   })
-// });
 
 
 

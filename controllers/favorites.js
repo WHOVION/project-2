@@ -3,15 +3,15 @@ const router = express.Router();
 const db = require('../models')
 const axios = require('axios')
 
-// GET add user: res.locals.user
+// for GET -- add,  user: res.locals.user
 
 // GET /favorites - return a page with favorite songs
-// READ function to find all favorited songs
+
 router.get('/', async (req, res) => {
     try {
-      // TODO: Get all records from the DB and render to view
       const favSong = await db.songs.findAll()
       res.render('faves.ejs', {
+        user: res.locals.user,
         songs: songs
       });
     } catch (error) {
@@ -38,21 +38,6 @@ router.get('/', async (req, res) => {
     res.redirect('/favorites');
   });
   
-  router.get('/:name', async (req, res) => {
-    try {
-      const url = `https://itunes.apple.com/us/rss/topsongs/limit=100/json${req.params.name}`
-      const response = await axios.get(url)
-      res.render('faves.ejs', {
-        songs: response.data,
-        name: req.params.name,
-        user: res.locals.user
-      })
-      // console.log(response.data)
-    } catch (error) {
-      console.log(error)
-      res.status(500).send('api error')
-    }
-  })
 
 
 

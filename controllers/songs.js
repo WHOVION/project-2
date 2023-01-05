@@ -16,6 +16,21 @@ router.get('/', (req, res) => {
   })
 });
 
+// GET /songs/songName
+router.get('/', async (req, res) => {
+  try {
+    const url = `http://pokeapi.co/api/v2/pokemon/${req.params.name}`
+    const response = await axios.get(url)
+    res.render('show.ejs', {
+      pokemons: response.data,
+      name: req.params.name
+    })
+    // console.log(response.data)
+  } catch (error) {
+    console.log(error)
+    res.status(500).send('api error')
+  }
+})
 
 
 

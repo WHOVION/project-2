@@ -1,7 +1,7 @@
 home page:
-home page after loggin in should be a new one. nav bar includes, home favorites (user email-not clickable). Top right should have logout
+home page after loggin in should be a new one. nav bar includes, home favorites (user email-not clickable). Top right should have logout /
 
-home page has list of songs. Song image, name, artist. Button to add to favorites
+home page has list of songs. Song image, name, artist. Button to add to favorites //
 
 clicking add to favorites, adds song to favorite and switches page to favorites page
 
@@ -19,3 +19,19 @@ top of comment section has input and send button
 under that has a box of comments(username top, comment under)
 
 next to username has a remove button to remove comment
+
+things to remember: 
+
+GET renders ejs. Render takes ejs
+res.redirect sends you to new route(url) 
+
+
+<!-- <-- song image, song name, artist name 
+<-- <img src="<%= song['im:image[0]'.label %>" />  
+<h2><%= song['im:name'].label %></h2>
+<h4><%= song['im:artist'].label %></h4>  -->
+
+      <h2><%= song['im:name'].label %></h2>
+      <h4><%= song['im:artist'].label %></h4>
+
+
