@@ -11,7 +11,7 @@
         <input hidden type="text" name="name" value="<%= song['im:name'].label %>">
         <button class="btn btn-primary" type="submit">Add to Favorites</button>
       </form>
-      <form method="GET" action="/songs">
+      <form method="GET" action="/songs/<%= song['im:name'].label %>">
         <input hidden type="text" name="name" value="<%= song['im:name'].label %>">
         <button class="btn btn-primary" type="submit">See more info</button>
       </form>

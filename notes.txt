@@ -25,43 +25,57 @@ things to remember:
 --RUD always takes redirect
 --res.redirect sends you to new route(url) 
 --ejs files don't take comments
+--PK: ID that tracks in specific table. each user/song would have there own id
+--Fk: ID that links with PK. Comments/users_songs would have FK
+--these are relationships
+      1:M -- User-comments
+             songs-comments     
+             user-songs
+--creating models -- example with this project
 
-
-
-
-
-Questions:
-
-Creating models. user, user favorites(removing favorites from models), song model cause it will have comments
-
-Is it easier to make comments linked with user and only user can delete or is it better once comment is made its there.
-Better to have user input name or can I automatically add it?
-
-For details, we need song name, how do i make the parameters for song name since its weird notation?
-
-how to display comments in details.ejs
-
-PK: ID that tracks in specific table. each user would have there own id
-
-Fk:
-
-these are relationships
-1:M -- User-comments
-        songs-comments     
-        user-songs
-
-
-creating models
+sequelize model:create --name song  --attributes userId:integer,comment:string
 
 sequelize model:create --name comment --attributes userId:integer,comment:string,songId:integer
 
 after sequelize db:migrate
+-- join table
+   sequelize model:create --name users_songs --attributes userId:integer,songId:integer
+
+user model:
+  // for 1:m -- hasMany is what we put on the 1. belongsTo to is for 'm' 
+      models.user.belongsToMany(models.song, {through:'users_songs'})
+      models.user.hasMany(models.comment)
+
+song model:
+      // join table
+      // for 1:m -- hasMany is what we put on the 1. belongsTo is for 'm' 
+      models.song.belongsToMany(models.user, {through:'users_songs'})
+      models.song.hasMany(models.comment)
+
+comment model:
+  // for 1:m -- hasMany is what we put on the 1. belongsTo is for 'm' 
+      // each comment belongs to a single user
+      // each comment has a fk that references a pk 
+      // this relationship says that each comment "belongs to" a single user. This means that each comment has a foreign key field that references the primary key of a user record, and this relationship is used to retrieve the user associated with a given comment.
+      models.comment.belongsTo(models.song)
+      models.comment.belongsTo(models.user)
+
+
+To-Do:
+
+songs.js: get more details for specific song, adding comments to specific song
+-- fixing url params
+-- linking comment with song
+-- (maybe link it with user so being able to delete it)
+favorites.js: adding favorites, deleting favorites
+-- linking song with user, adding it to users_songs model
 
 
 
 
-sequelize model:create --name pets_toys --attributes petId:integer,toyId:integer
 
+resources:
 
 font awesome
+
 

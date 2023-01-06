@@ -1,6 +1,6 @@
-<%- include('../partials/header', { user }) %>
+<%- include('./partials/header', { user }) %>
 
-<% songs.forEach(function(song) {  %>
+<% details.forEach(function(song) {  %>
     <div class="well">
       <img src="<%= song['im:image'][2].label %>" />  
       <h2><%= song['im:name'].label %></h2>
@@ -8,23 +8,20 @@
       <h3><%= song.category.attributes.term %></h3>      
       <h3><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Buy now for <%= song['im:price'].label %> on apple music</a></h3>
     </div>
- <% }) %>
 
- <div>
-  <h2>Share your opinions down below:</h2>
-  <form method="POST" action="/songs/:name">
-    <label for="dinosaurName">Name</label>
-    <input id="dinosaurName" type="text" name="name">
-  
-    <input type="submit">
-  </form>
-  <h2>Comments</h2>
- </div>
+    <div>
+      <h2>Share your opinions down below:</h2>
+      <form method="POST" action="/songs/:name">
+        <label for="Name">Name</label>
+        <input id="" type="text" name="name">
+      
+        <input type="submit">
+      </form>
+      <h2>Comments</h2>
+     </div>
+ <% }) %>
 
  
 
-
-
-
-<%- include('../partials/footer') %>
+<%- include('./partials/footer') %>
 

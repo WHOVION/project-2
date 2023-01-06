@@ -16,23 +16,28 @@ router.get('/', (req, res) => {
   })
 });
 
-// GET /songName
-// this is the code to see more details of a song
-router.get('/:name', async (req, res) => {
-  try {
-    
-  } catch (error) {
-    console.log(error)
-    res.status(500).send('Server is down')
-  }
-  res.render('details.ejs')
-})
+
+  // GET /songName
+  // this is the code to see more details of a song
+  router.get('/:name', async (req, res) => {
+    try {
+      const url = `https://itunes.apple.com/us/rss/topsongs/limit=100/json${req.params.name}`
+      const response = await axios.get(url)
+       res.render('show.ejs', {
+      details: response.data.entry,
+      name: req.params.name
+       })
+    } catch (error) {
+      console.log(error)
+      res.status(500).send('Server is down')
+    }
+  })
 
 // POST /:name
 // comments code
 router.post('/:name', async (req, res) => {
   try {
-    
+    // need to link comment with song
   } catch (error) {
     console.log(error)
     res.status(500).send('Server is down')

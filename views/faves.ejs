@@ -8,7 +8,7 @@
           <img src="<%= song['im:image'][2].label %>" />  
           <h2><%= song['im:name'].label %></h2>
           <h4><%= song['im:artist'].label %></h4>
-          <form method="DELETE" action="/favorites">
+          <form method="POST" action="/songs/<%= song['im:name'].label %>/?_method=DELETE"></form>
             <input hidden type="text" name="name" value="<%= song['im:name'].label %>">
             <button class="btn btn-primary" type="submit">Remove from Favorites</button>
           </form>
@@ -24,3 +24,5 @@
 
 
 <%- include('../views/partials/footer.ejs') %>
+
+
