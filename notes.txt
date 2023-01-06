@@ -45,7 +45,23 @@ PK: ID that tracks in specific table. each user would have there own id
 
 Fk:
 
+these are relationships
+1:M -- User-comments
+        songs-comments     
+        user-songs
+
+
+creating models
+
+sequelize model:create --name comment --attributes userId:integer,comment:string,songId:integer
+
+after sequelize db:migrate
 
 
 
+
+sequelize model:create --name pets_toys --attributes petId:integer,toyId:integer
+
+
+font awesome
 
