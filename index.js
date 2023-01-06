@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser')
 const db = require('./models')
 const crypto = require('crypto-js')
 
+
 // app config
 const app = express()
 const PORT = process.env.PORT || 8000
@@ -14,6 +15,7 @@ app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
 // tell express to parse incoming cookies
 app.use(cookieParser())
+app.use(express.static(__dirname + '/public/'))
 
 // custom auth middleware that checks the cookies for a user id
 // and it finds one, look up the user in the db
