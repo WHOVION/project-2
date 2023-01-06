@@ -8,23 +8,15 @@
       <h2><%= song['im:name'].label %></h2>
       <h4><%= song['im:artist'].label %></h4>
       <form method="POST" action="/favorites">
-        <input hidden type="text" name="name" value="<%= song.name %>">
+        <input hidden type="text" name="name" value="<%= song['im:name'].label %>">
         <button class="btn btn-primary" type="submit">Add to Favorites</button>
       </form>
       <form method="GET" action="/songs">
-        <input hidden type="text" name="name" value="<%= song.name %>">
+        <input hidden type="text" name="name" value="<%= song['im:name'].label %>">
         <button class="btn btn-primary" type="submit">See more info</button>
       </form>
     </div>
   <% }); %>
 </div>
 
-
-
-
-
-
 <%- include('../views/partials/footer.ejs') %>
-
-
-

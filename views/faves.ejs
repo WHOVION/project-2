@@ -9,17 +9,16 @@
           <h2><%= song['im:name'].label %></h2>
           <h4><%= song['im:artist'].label %></h4>
           <form method="DELETE" action="/favorites">
-            <input hidden type="text" name="name" value="<%= song.name %>">
-            <button class="btn btn-primary" type="submit">Remove</button>
+            <input hidden type="text" name="name" value="<%= song['im:name'].label %>">
+            <button class="btn btn-primary" type="submit">Remove from Favorites</button>
           </form>
-          <form method="GET" action="/songs">
-            <input hidden type="text" name="name" value="<%= song.name %>">
+          <form method="GET" action="/favorites">
+            <input hidden type="text" name="name" value="<%= song['im:name'].label %>">
             <button class="btn btn-primary" type="submit">See more info</button>
           </form>
         </div>
       <% }); %>
     </div>
-
 
 
 

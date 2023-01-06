@@ -1,41 +1,49 @@
 home page:
-home page after loggin in should be a new one. nav bar includes, home favorites (user email-not clickable). Top right should have logout /
+home page after loggin in should be a new one. nav bar includes, home favorites (user email-not clickable). Top right should have logout //
 
-home page has list of songs. Song image, name, artist. Button to add to favorites //
+home page has list of songs. Song image, name, artist. Button to add to favorites and button for see more info //
 
-clicking add to favorites, adds song to favorite and switches page to favorites page
+clicking add to favorites, adds song to favorite but stays on same page //
 
 favs page: 
 see all favorited songs, next to it has remove Button
-
-songs also have button that says details
+songs also have button to see more info //
 
 
 details page:
-once you are in details of a song, you see info about it(will choose later), and in bottom will have comment section
+once you are in details of a song, you see info about it(will choose later), and in bottom will have comment section //
 
-top of comment section has input and send button
+top of comment section has input and send button //
 
 under that has a box of comments(username top, comment under)
 
-next to username has a remove button to remove comment
+next to username has a remove button to remove comment(maybe)
 
 things to remember: 
 
-GET renders ejs. Render takes ejs
-res.redirect sends you to new route(url) 
-ejs files don't take comments
+--GET renders "ejs". Render takes ejs. GET always has renders
+--RUD always takes redirect
+--res.redirect sends you to new route(url) 
+--ejs files don't take comments
+
+
 
 
 
 Questions:
 
-Creating models. user, user favorites(removing favorites from models), song model for comments 
+Creating models. user, user favorites(removing favorites from models), song model cause it will have comments
 
 Is it easier to make comments linked with user and only user can delete or is it better once comment is made its there.
 Better to have user input name or can I automatically add it?
 
-For details, we need song name, how do i make params song name since its weird notation?
+For details, we need song name, how do i make the parameters for song name since its weird notation?
+
+how to display comments in details.ejs
+
+PK: ID that tracks in specific table. each user would have there own id
+
+Fk:
 
 
 
