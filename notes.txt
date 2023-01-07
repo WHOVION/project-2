@@ -1,3 +1,11 @@
+questions:
+
+
+sql main thing
+
+
+
+
 home page:
 home page after loggin in should be a new one. nav bar includes, home favorites (user email-not clickable). Top right should have logout //
 
@@ -64,12 +72,11 @@ comment model:
 To-Do:
 
 songs.js: get more details for specific song, adding comments to specific song
--- fixing url params
--- linking comment with song
+-- GET-fixing url params
+-- POST-linking comment with song
 -- (maybe link it with user so being able to delete it)
 favorites.js: adding favorites, deleting favorites
 -- linking song with user, adding it to users_songs model
-
 
 
 

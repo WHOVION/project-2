@@ -21,7 +21,9 @@ router.get('/', (req, res) => {
   // this is the code to see more details of a song
   router.get('/:name', async (req, res) => {
     try {
-      const url = `https://itunes.apple.com/us/rss/topsongs/limit=100/json${req.params.name}`
+      // URL doesnt work
+      const url = `https://itunes.apple.com/us/rss/topsongs/limit=100/json/${req.params.name}`
+      console.log(url)
       const response = await axios.get(url)
        res.render('show.ejs', {
       details: response.data.entry,
@@ -38,11 +40,18 @@ router.get('/', (req, res) => {
 router.post('/:name', async (req, res) => {
   try {
     // need to link comment with song
+    // comment on left is in db, right side is expected content
+    db.comment.create({
+        comment: req.body.comment,
+        userId: res.locals.userId,
+        songId: res.locals
+    })
+    // always put redirect at the end of TRY
+    res.redirect(`/songs/${req.params.name}`)
   } catch (error) {
     console.log(error)
     res.status(500).send('Server is down')
   }
-  res.redirect('/songs/:name')
 })
 
 // export the router

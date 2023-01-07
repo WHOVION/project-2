@@ -21,6 +21,7 @@ router.get('/new', (req, res) => {
 router.post('/', async (req, res) => {
     try {
         // based on the info in the req.body, find or create user
+        // sequelize methods
         const [newUser, created] = await db.user.findOrCreate({
             where: {
                 email: req.body.email

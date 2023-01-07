@@ -11,10 +11,13 @@
 
     <div>
       <h2>Share your opinions down below:</h2>
-      <form method="POST" action="/songs/:name">
-        <label for="Name">Name</label>
-        <input id="" type="text" name="name">
-      
+      <form method="POST" action="/songs/<%= song['im:name'].label %>">
+        <label for="comment">comment</label>
+        <input id="comment" type="text" name="comment">
+        
+        id of song
+        
+    
         <input type="submit">
       </form>
       <h2>Comments</h2>

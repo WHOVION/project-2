@@ -24,6 +24,7 @@ router.get('/', async (req, res) => {
   // POST /favorites - receive the name of the song and add it to database
   // POST is add
   // PUT is update
+  // during sequelize, dont mess with join table
   router.post('/', async (req, res) => {
     try {
       const favSong = await db.users_songs.findOrCreate({
