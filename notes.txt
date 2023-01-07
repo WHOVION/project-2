@@ -1,4 +1,4 @@
-questions:
+
 
 
 sql main thing
@@ -71,8 +71,30 @@ comment model:
 
 To-Do:
 
--- need to figure out api
-adding to favorites, deleting
+songs.ejs: 
+-- make sure hidden input for img can save
+-- when you click favorites, it saves all the hidden input to the song id, how do we associate user id but also allow to get song id on its own for details?
+
+favorites.js:
+-- in the POST(line 28), how do we make it know link song with user thats logged in?
+-- (line 54) we now have saved all info so now we just need to make code look for it
+      once done, copy code to songs.js(line 22)
+-- deleting song from users_songs
+
+favorites.ejs:
+get form should be same as songs.ejs form
+
+
+
+-- maybe comments will be stretch goal
+
+
+-- need to creat new model for songs, add all info
+
+-- need to figure out how to link songs to users. 
+    song already has id
+
+
 
 
 

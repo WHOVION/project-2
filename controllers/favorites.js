@@ -27,16 +27,18 @@ router.get('/', async (req, res) => {
   // during sequelize, dont mess with join table
   router.post('/', async (req, res) => {
     try {
-      let {name, genre} = req.body
-      console.log(name)
-      console.log(genre)
+      let {name, artist, genre, price, image} = req.body
+      // console.log(name)
+      // console.log(genre)
       const favSong = await db.song.findOrCreate({
         where: {
           // body not referencing body, think of body as a data
           // need to make model for specific song to add to DB
           songName: name,
-          genre: genre
-
+          artist: artist,
+          genre: genre,
+          price: price,
+          image: image
         }
       })
       // res.redirect('/songs')
@@ -44,8 +46,6 @@ router.get('/', async (req, res) => {
     } catch (error) {
       console.log(error)
     }
-    // TODO: Get form data and add a new record to DB
-    // figure out reason of params
   });
   
 
@@ -53,12 +53,22 @@ router.get('/', async (req, res) => {
   // this is the code to see more details of a song
   router.get('/:name', async (req, res) => {
     try {
-      const url = `https://itunes.apple.com/us/rss/topsongs/limit=100/json${req.params.name}`
-      const response = await axios.get(url)
-       res.render('show.ejs', {
-      details: response.data,
-      name: req.params.name
-       })
+      // const url = `https://itunes.apple.com/us/rss/topsongs/limit=100/json${req.params.name}`
+      // const response = await axios.get(url)
+      // let songName = req.body.song['im:name'].label
+       res.render('details.ejs', {
+      // details: response.data,
+      // name: req.params.songName
+      let {name, artist, genre, price, image} = req.body
+      const details = await db.song.findOrCreate({
+        where: {
+          songName: name,
+          artist: artist,
+          genre: genre,
+          price: price,
+          image: image
+        }
+      })
     } catch (error) {
       console.log(error)
       res.status(500).send('Server is down')
@@ -79,23 +89,5 @@ router.get('/', async (req, res) => {
     res.redirect('/favorites')
   })
 
-  // First, get a reference to a pet.
-// db.pet.findOrCreate({
-//   where: {
-//     name: "Silly May",
-//     species: "Mini Aussie",
-//     userId: 1
-//   }
-// }).then(([pet, created]) => {
-//   // Second, get a reference to a toy.
-//   db.toy.findOrCreate({
-//     where: {type: "stinky bear", color: "brown"}
-//   }).then(([toy, created]) => {
-//     // Finally, use the "addModel" method to attach one model to another model.
-//     pet.addToy(toy).then(relationInfo => {
-//       console.log(`${toy.type} added to ${pet.name}.`);
-//     });
-//   });
-// });
 
 module.exports = router;

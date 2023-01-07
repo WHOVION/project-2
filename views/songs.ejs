@@ -9,15 +9,33 @@
       <h4><%= song['im:artist'].label %></h4>
       <form method="POST" action="/favorites">
         <input hidden type="text" name="name" value="<%= song['im:name'].label %>">
+        <input hidden type="text" name="artist" value="<%= song['im:artist'].label %>">
         <input hidden type="text" name="genre" value=" <%= song.category.attributes.term %>">
+
+        <input hidden type="text" name="price" value="<%= song['im:price'].label %>">
+        <input hidden type="image" name="image" src="<%= song['im:image'][2].label %>">
+
         <button class="btn btn-primary" type="submit">Add to Favorites</button>
       </form>
+
       <form method="GET" action="/songs/<%= song['im:name'].label %>">
         <input hidden type="text" name="name" value="<%= song['im:name'].label %>">
+        <input hidden type="text" name="artist" value="<%= song['im:artist'].label %>">
+        <input hidden type="text" name="genre" value=" <%= song.category.attributes.term %>">
+
+        <input hidden type="text" name="price" value="<%= song['im:price'].label %>">
+        <input hidden type="image" name="image" src="<%= song['im:image'][2].label %>">
+        
         <button class="btn btn-primary" type="submit">See more info</button>
       </form>
+
     </div>
   <% }); %>
 </div>
 
 <%- include('../views/partials/footer.ejs') %>
+
+
+
+
+       
