@@ -9,6 +9,7 @@
       <h4><%= song['im:artist'].label %></h4>
       <form method="POST" action="/favorites">
         <input hidden type="text" name="name" value="<%= song['im:name'].label %>">
+        <input hidden type="text" name="genre" value=" <%= song.category.attributes.term %>">
         <button class="btn btn-primary" type="submit">Add to Favorites</button>
       </form>
       <form method="GET" action="/songs/<%= song['im:name'].label %>">

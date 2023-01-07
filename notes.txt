@@ -71,12 +71,8 @@ comment model:
 
 To-Do:
 
-songs.js: get more details for specific song, adding comments to specific song
--- GET-fixing url params
--- POST-linking comment with song
--- (maybe link it with user so being able to delete it)
-favorites.js: adding favorites, deleting favorites
--- linking song with user, adding it to users_songs model
+-- need to figure out api
+adding to favorites, deleting
 
 
 

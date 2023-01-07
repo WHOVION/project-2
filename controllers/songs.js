@@ -22,8 +22,9 @@ router.get('/', (req, res) => {
   router.get('/:name', async (req, res) => {
     try {
       // URL doesnt work
+      console.log(req.params.name)
       const url = `https://itunes.apple.com/us/rss/topsongs/limit=100/json/${req.params.name}`
-      console.log(url)
+      //console.log(url)
       const response = await axios.get(url)
        res.render('show.ejs', {
       details: response.data.entry,

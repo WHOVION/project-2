@@ -10,10 +10,10 @@ const axios = require('axios')
 // code that shows all favorite songs
 router.get('/', async (req, res) => {
     try {
-      const favSong = await db.users_songs.findAll()
+      const favorites = await db.songs.findAll()
       res.render('faves.ejs', {
         user: res.locals.user,
-        favSong: favSong
+        favorites: favorites
       });
     } catch (error) {
       console.log(error)
@@ -27,19 +27,25 @@ router.get('/', async (req, res) => {
   // during sequelize, dont mess with join table
   router.post('/', async (req, res) => {
     try {
-      const favSong = await db.users_songs.findOrCreate({
+      let {name, genre} = req.body
+      console.log(name)
+      console.log(genre)
+      const favSong = await db.song.findOrCreate({
         where: {
           // body not referencing body, think of body as a data
           // need to make model for specific song to add to DB
-          name: req.body.song['im:name'].label
+          songName: name,
+          genre: genre
+
         }
       })
+      // res.redirect('/songs')
+      res.redirect(req.get('referer'))
     } catch (error) {
       console.log(error)
     }
     // TODO: Get form data and add a new record to DB
     // figure out reason of params
-    res.redirect('/songs');
   });
   
 

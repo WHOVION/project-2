@@ -3,11 +3,10 @@
 
 <div>
     <h1>Your Favorites</h1>
-    <% favSong.forEach(function(song) { %>
+    <% favorites.forEach(function(song) { %>
         <div class="well">
-          <img src="<%= song['im:image'][2].label %>" />  
-          <h2><%= song['im:name'].label %></h2>
-          <h4><%= song['im:artist'].label %></h4>
+          <h2><%= song.songName %></h2>
+          <h4><%= song.genre %></h4>
           <form method="POST" action="/songs/<%= song['im:name'].label %>/?_method=DELETE"></form>
             <input hidden type="text" name="name" value="<%= song['im:name'].label %>">
             <button class="btn btn-primary" type="submit">Remove from Favorites</button>
