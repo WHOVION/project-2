@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const db = require('.');
 module.exports = (sequelize, DataTypes) => {
   class users_songs extends Model {
     /**
@@ -22,3 +23,4 @@ module.exports = (sequelize, DataTypes) => {
   });
   return users_songs;
 };
+

@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models')
-const axios = require('axios')
 // fetches api 
+const axios = require('axios')
 
 // for GET -- add,  user: res.locals.user
 
@@ -10,11 +10,17 @@ const axios = require('axios')
 // code that shows all favorite songs
 router.get('/', async (req, res) => {
     try {
-      const favorites = await db.songs.findAll()
+
+      if(res.locals.user) {
+        const currentUser = await db.user.findByPk(res.locals.user.id)
+      
+
+      const favorites = await currentUser.getSongs()
       res.render('faves.ejs', {
         user: res.locals.user,
         favorites: favorites
       });
+    }
     } catch (error) {
       console.log(error)
     }
@@ -26,67 +32,61 @@ router.get('/', async (req, res) => {
   // PUT is update
   // during sequelize, dont mess with join table
   router.post('/', async (req, res) => {
+    
     try {
-      let {name, artist, genre, price, image} = req.body
+
+      if(res.locals.user) {
+        let {name} = req.body
+        const currentUser = await db.user.findByPk(res.locals.user.id)
+        
+        const [newFav, created] = await db.song.findOrCreate({
+          where: {
+            songName: name
+          }
+        })
+        await currentUser.addSong(newFav)
+
       // console.log(name)
       // console.log(genre)
-      const favSong = await db.song.findOrCreate({
-        where: {
-          // body not referencing body, think of body as a data
-          // need to make model for specific song to add to DB
-          songName: name,
-          artist: artist,
-          genre: genre,
-          price: price,
-          image: image
-        }
-      })
+      // const favSong = await db.song.findOrCreate({
+      //   where: {
+      //     // body not referencing body, think of body as a data
+      //     // need to make model for specific song to add to DB
+      //     songName: name,
+      //     genre: genre
+      //   }
+      // })
       // res.redirect('/songs')
-      res.redirect(req.get('referer'))
+      // res.redirect(req.get('referer'))
+      res.redirect('/songs')
+    }
+    res.redirect('/users/new')
     } catch (error) {
       console.log(error)
     }
   });
-  
-
-  // GET /songName
-  // this is the code to see more details of a song
-  router.get('/:name', async (req, res) => {
-    try {
-      // const url = `https://itunes.apple.com/us/rss/topsongs/limit=100/json${req.params.name}`
-      // const response = await axios.get(url)
-      // let songName = req.body.song['im:name'].label
-       res.render('details.ejs', {
-      // details: response.data,
-      // name: req.params.songName
-      let {name, artist, genre, price, image} = req.body
-      const details = await db.song.findOrCreate({
-        where: {
-          songName: name,
-          artist: artist,
-          genre: genre,
-          price: price,
-          image: image
-        }
-      })
-    } catch (error) {
-      console.log(error)
-      res.status(500).send('Server is down')
-    }
-  })
 
  
+ 
+  
   // DELETE //:name
   // deleting song from favorites
-  router.delete('/:name', async (req, res) => {
+  router.delete('/', async (req, res) => {
     try {
-      
+      if(res.locals.user) {
+        const currentUser = await db.user.findByPk(res.locals.user.id)
+        const song = await db.song.findByPk(req.body.songId)
+        await currentUser.removeSongs(song)
+        res.redirect('/')
+        // res.send
+      } else {
+    res.redirect('/users/new')
+      }
     } catch (error) {
       console.log(error)
       res.status(500).send('Server is down')
     }
     // do i need to do just '/' or '/favorites' to redirect it back to the same page
-    res.redirect('/favorites')
   })
 
 

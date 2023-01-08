@@ -6,27 +6,14 @@
     <div class="well">
       <img src="<%= song['im:image'][2].label %>" />  
       <h2><%= song['im:name'].label %></h2>
+      <% let songName = song['im:name'].label %> 
       <h4><%= song['im:artist'].label %></h4>
+      <h3><%= song.category.attributes.term %></h3>      
+      <h3><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Buy now for <%= song['im:price'].label %> on apple music</a></h3>
       <form method="POST" action="/favorites">
         <input hidden type="text" name="name" value="<%= song['im:name'].label %>">
-        <input hidden type="text" name="artist" value="<%= song['im:artist'].label %>">
-        <input hidden type="text" name="genre" value=" <%= song.category.attributes.term %>">
-
-        <input hidden type="text" name="price" value="<%= song['im:price'].label %>">
-        <input hidden type="image" name="image" src="<%= song['im:image'][2].label %>">
-
+        <input hidden type="text" name="genre" value="<%= song.category.attributes.term %>">
         <button class="btn btn-primary" type="submit">Add to Favorites</button>
-      </form>
-
-      <form method="GET" action="/songs/<%= song['im:name'].label %>">
-        <input hidden type="text" name="name" value="<%= song['im:name'].label %>">
-        <input hidden type="text" name="artist" value="<%= song['im:artist'].label %>">
-        <input hidden type="text" name="genre" value=" <%= song.category.attributes.term %>">
-
-        <input hidden type="text" name="price" value="<%= song['im:price'].label %>">
-        <input hidden type="image" name="image" src="<%= song['im:image'][2].label %>">
-        
-        <button class="btn btn-primary" type="submit">See more info</button>
       </form>
 
     </div>
@@ -34,6 +21,8 @@
 </div>
 
 <%- include('../views/partials/footer.ejs') %>
+
+
 
 
 
