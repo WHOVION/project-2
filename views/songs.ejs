@@ -13,8 +13,8 @@
   </div>
       <h3><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Buy now for <%= song['im:price'].label %> on apple music</a></h3>
       <form method="POST" action="/favorites">
-        <input hidden type="text" name="name" value="<%= song['im:name'].label %>">
-        <input hidden type="text" name="genre" value="<%= song.category.attributes.term %>">
+        <input autocomplete="off" hidden type="text" name="name" value="<%= song['im:name'].label %>">
+        <input autocomplete="off" hidden type="text" name="genre" value="<%= song.category.attributes.term %>">
         <button class="btn btn-primary" type="submit">Add to Favorites</button>
       </form>
 

@@ -8,7 +8,7 @@
          <% if (typeof song.songName!=undefined) { %>
           <h2><%= song.songName %></h2>
           <form method="POST" action="/favorites?_method=DELETE">
-            <input hidden type="text" name="songId" value="<%= song.id %>">
+            <input autocomplete="off" hidden type="text" name="songId" value="<%= song.id %>">
             <button class="btn btn-primary" type="submit">Remove from Favorites</button>
           </form>
        <% } %>

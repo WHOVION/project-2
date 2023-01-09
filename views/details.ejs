@@ -9,21 +9,6 @@
       <h3><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Buy now for <%= song['im:price'].label %> on apple music</a></h3>
     </div>
 
-    <div>
-      <h2>Share your opinions down below:</h2>
-      <form method="POST" action="/songs/<%= song['im:name'].label %>">
-        <label for="comment">comment</label>
-        <input id="comment" type="text" name="comment">
-
-        
-  
-        <input type="submit">
-      </form>
-      <h2>Comments</h2>
-     </div>
- <% }) %>
-
  
-
 <%- include('./partials/footer') %>
 
