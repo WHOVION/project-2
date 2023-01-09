@@ -6,7 +6,6 @@
     <div class="well">
       <img src="<%= song['im:image'][2].label %>" />  
       <h2><%= song['im:name'].label %></h2>
-      <% let songName = song['im:name'].label %> 
       <h4><%= song['im:artist'].label %></h4>
       <h3><%= song.category.attributes.term %></h3>      
       <h3><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Buy now for <%= song['im:price'].label %> on apple music</a></h3>

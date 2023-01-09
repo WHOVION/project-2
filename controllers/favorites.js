@@ -76,8 +76,8 @@ router.get('/', async (req, res) => {
       if(res.locals.user) {
         const currentUser = await db.user.findByPk(res.locals.user.id)
         const song = await db.song.findByPk(req.body.songId)
-        await currentUser.removeSongs(song)
-        res.redirect('/')
+        await currentUser.removeSong(song)
+        res.redirect('/favorites')
         // res.send
       } else {
     res.redirect('/users/new')
@@ -91,3 +91,4 @@ router.get('/', async (req, res) => {
 
 
 module.exports = router;
+

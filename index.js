@@ -1,10 +1,12 @@
 // required packages
 require('dotenv').config()
 const express = require('express')
+const methodOverride = require('method-override')
 const axios = require('axios'); 
 const cookieParser = require('cookie-parser')
 const db = require('./models')
 const crypto = require('crypto-js')
+
 
 
 // app config
@@ -16,6 +18,7 @@ app.use(express.urlencoded({ extended: false }))
 // tell express to parse incoming cookies
 app.use(cookieParser())
 app.use(express.static(__dirname + '/public/'))
+app.use(methodOverride('_method'))
 
 // custom auth middleware that checks the cookies for a user id
 // and it finds one, look up the user in the db
