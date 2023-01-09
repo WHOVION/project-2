@@ -18,26 +18,6 @@ router.get('/', (req, res) => {
 });
 
 
-// // POST /:name
-// // comments code
-// router.post('/:name', async (req, res) => {
-//   try {
-//     // need to link comment with song
-//     // comment on left is in db, right side is expected content
-//     db.comment.create({
-//         comment: req.body.comment,
-//         userId: res.locals.userId,
-//         songId: res.locals
-//     })
-//     // always put redirect at the end of TRY
-//     res.redirect(`/songs/${req.params.name}`)
-//   } catch (error) {
-//     console.log(error)
-//     res.status(500).send('Server is down')
-//   }
-// })
-
-// export the router
 module.exports = router
 
 

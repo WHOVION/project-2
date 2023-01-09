@@ -104,16 +104,16 @@ router.get('/logout', (req, res) => {
 })
 
 // GET /users/profile -- show the user their profile page
-router.get('/profile', (req, res) => {
-    // if the user is not logged in -- they are not allowed to be here
-    if (!res.locals.user) {
-        res.redirect('/users/login?message=You must authenticate before you are authorized to view this resource!')
-    } else {
-        res.render('users/profile.ejs', {
-            user: res.locals.user
-        })
-    }
-})
+// router.get('/profile', (req, res) => {
+//     // if the user is not logged in -- they are not allowed to be here
+//     if (!res.locals.user) {
+//         res.redirect('/users/login?message=You must authenticate before you are authorized to view this resource!')
+//     } else {
+//         res.render('users/profile.ejs', {
+//             user: res.locals.user
+//         })
+//     }
+// })
 
 
 

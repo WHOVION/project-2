@@ -7,7 +7,6 @@
         <div class="well">
          <% if (typeof song.songName!=undefined) { %>
           <h2><%= song.songName %></h2>
-          <p><%= song.id %></p>
           <form method="POST" action="/favorites?_method=DELETE">
             <input hidden type="text" name="songId" value="<%= song.id %>">
             <button class="btn btn-primary" type="submit">Remove from Favorites</button>

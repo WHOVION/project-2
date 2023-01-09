@@ -6,40 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>dotify</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <nav>
-        <ul>
-            <!-- show home whether the user is logged in or not -->
-            <% if (user) { %>
-                <li><a href='/songs'>Home</a></li>
-                <!-- show these if user is logged -->
-                <li><a href='/favorites'>Favorites</a></li>
-                <h3><%= user.email %></h3>
-                <li><a href='/users/logout'>Logout</a></li>
-           <% } else { %>
-                <!-- show these if user not logged in --> 
-                <li><a href='/'>Home</a></li>
-                <li><a href="/users/new">Sign up</a></li>
-                <li><a href='/users/login'>Login</a></li>
-           <% } %>
-        </ul>
-    </nav>
-
-
-
-
-
-
-
-
-
     
-    <!-- can we use a if else statement with bootstrap? how to make images work? -->
     <!-- start of navbar -->
-    <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #e3f2fd;"> 
+      <% if (user) { %>
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" href="/songs">
                 <img src="logo.jpg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                 Home
               </a>
@@ -49,19 +24,40 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Favorites</a>
+                <a class="nav-link active" aria-current="page" href="/favorites">Favorites</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/users/profile">Pofile</a>
-              </li>
+              <h3 class="nav-item"><%= user.email %></h3>
               <li class="nav-item">
                 <a class="nav-link" href="/users/logout">Logout</a>
               </li>
             </ul>
           </div>
         </div>
-      </nav> -->
+        <% } else { %>
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">
+              <img src="logo.jpg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+              Home
+            </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/users/new">Sign Up</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/users/login">Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <% } %>
+      </nav>
     <!-- end of navbar -->
+
+  
 
    
 

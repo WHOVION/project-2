@@ -23,6 +23,7 @@ router.get('/', async (req, res) => {
     }
     } catch (error) {
       console.log(error)
+      res.status(500).send('Server is down')
     }
   });
 
@@ -60,9 +61,10 @@ router.get('/', async (req, res) => {
       // res.redirect(req.get('referer'))
       res.redirect('/songs')
     }
-    res.redirect('/users/new')
+    // res.redirect('/users')
     } catch (error) {
       console.log(error)
+      res.status(500).send('Server is down')
     }
   });
 
