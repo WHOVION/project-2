@@ -1,34 +1,12 @@
-
-
-
 sql main thing
+-- has different versions
 
 
-
-
-home page:
-home page after loggin in should be a new one. nav bar includes, home favorites (user email-not clickable). Top right should have logout //
-
-home page has list of songs. Song image, name, artist. Button to add to favorites and button for see more info //
-
-clicking add to favorites, adds song to favorite but stays on same page //
-
-favs page: 
-see all favorited songs, next to it has remove Button
-songs also have button to see more info //
-
-
-details page:
-once you are in details of a song, you see info about it(will choose later), and in bottom will have comment section //
-
-top of comment section has input and send button //
-
-under that has a box of comments(username top, comment under)
-
-next to username has a remove button to remove comment(maybe)
 
 things to remember: 
 
+-- autocomplete="off" -- put it in input
+-- GET and POST only on web form method, action is where u say PUT/DELETE
 --GET renders "ejs". Render takes ejs. GET always has renders
 --RUD always takes redirect
 --res.redirect sends you to new route(url) 
@@ -73,113 +51,17 @@ comment model:
       sequelize model:create --name song  --attributes userId:integer, songName:string,artist:string,genre:genre,price:price,image:image
 
 
-To-Do:
-
-songs.ejs: 
--- make sure hidden input for img can save
--- when you click favorites, it saves all the hidden input to the song id, how do we associate user id but also allow to get song id on its own for details?
-
-favorites.js:
--- in the POST(line 28), how do we make it know link song with user thats logged in?
--- (line 54) we now have saved all info so now we just need to make code look for it
-      once done, copy code to songs.js(line 22)
--- deleting song from users_songs
-
-favorites.ejs:
-get form should be same as songs.ejs form
-
-
-
--- maybe comments will be stretch goal
-
-
--- need to creat new model for songs, add all info
-
--- need to figure out how to link songs to users. 
-    song already has id
-
-songs.js
-    -- main page will have add to favorites button
-       will display all the details
-       (prob get rid of comments)
-
-favorites.js
-      -- favorites page will have song name/artist
-      -- maybe removing favorites
-
-
-
-
-
-
 
 resources:
 
 font awesome
 
-faves.ejs:
 
-  <form method="GET" action="/songs/<%= song['im:name'].label %>">
-        <input hidden type="text" name="name" value="<%= song['im:name'].label %>">
-        <input hidden type="text" name="artist" value="<%= song['im:artist'].label %>">
-        <input hidden type="text" name="genre" value=" <%= song.category.attributes.term %>">
 
-        <input hidden type="text" name="price" value="<%= song['im:price'].label %>">
-        <input hidden type="image" name="image" src="<%= song['im:image'][2].label %>">
-        
-        <button class="btn btn-primary" type="submit">See more info</button>
+      
 
-            -- header.ejs
-        <nav>
-        <ul>
-            <!-- show home whether the user is logged in or not -->
-            <% if (user) { %>
-                <li><a href='/songs'>Home</a></li>
-                <!-- show these if user is logged -->
-                <li><a href='/favorites'>Favorites</a></li>
-                <h3><%= user.email %></h3>
-                <li><a href='/users/logout'>Logout</a></li>
-           <% } else { %>
-                <!-- show these if user not logged in --> 
-                <li><a href='/'>Home</a></li>
-                <li><a href="/users/new">Sign up</a></li>
-                <li><a href='/users/login'>Login</a></li>
-           <% } %>
-        </ul>
-    </nav>
 
-      -- new.ejs
+     
 
-    <form action="/users" method="POST">
-    <label for="email">Email:</label>
-    <input type="email" name="email" id="email" />
-
-    <label for="password">Password:</label>
-    <input type="password" name="password" id="password" />
-
-    <button type="submit">Sign up</button>
-</form>
-
-autocomplete="off" put it in input
-
-      -- login.ejs:
-
-<form action="/users/login" method="POST">
-    <label for="email">Email:</label>
-    <input type="email" name="email" id="email" required />
-
-    <label for="password">Password:</label>
-    <input type="password" name="password" id="password" required />
-
-    <button type="submit">Login</button>
-</form>
-
-      -- songs.ejs
-
-  <div class="well">
-      <img src="<%= song['im:image'][2].label %>" />  
-      <h2><%= song['im:name'].label %></h2>
-      <h4><%= song['im:artist'].label %></h4>
-      <h3><%= song.category.attributes.term %></h3>  
 
 

@@ -2,7 +2,6 @@ body  {
   text-align: center;
 }
 
-
 .card {
     /* width: 190px; */
     width: 1900px;
@@ -17,6 +16,7 @@ body  {
   .form {
     padding: 25px;
   } 
+  
   .card_header {
     display: flex;
     align-items: center;

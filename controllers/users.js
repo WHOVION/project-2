@@ -95,6 +95,31 @@ router.post('/login', async (req, res) => {
     }
 })
 
+router.get('/profile', (req, res) => {
+    res.render('users/profile.ejs', {
+        user: res.locals.user
+    })
+})
+
+router.put('/profile', async (req,res) => {
+    try {
+        const hashedPassword = bcrypt.hashSync(req.body.password, 12)
+            // console.log(hashedPassword)
+            // console.log(res.locals.user.email)
+        await db.user.update({ password: hashedPassword },
+            {
+                where: {
+                    email: res.locals.user.email
+                }
+        })  
+        res.redirect('/songs')
+    } catch (err) {
+        console.log(err)
+        res.status(500).send('server error')
+    }
+})
+
+
 // GET /users/logout -- clear any cookies and redirect to the homepage
 router.get('/logout', (req, res) => {
     // log the user out by removing the cookie
@@ -102,20 +127,6 @@ router.get('/logout', (req, res) => {
     res.clearCookie('userId')
     res.redirect('/')
 })
-
-// GET /users/profile -- show the user their profile page
-// router.get('/profile', (req, res) => {
-//     // if the user is not logged in -- they are not allowed to be here
-//     if (!res.locals.user) {
-//         res.redirect('/users/login?message=You must authenticate before you are authorized to view this resource!')
-//     } else {
-//         res.render('users/profile.ejs', {
-//             user: res.locals.user
-//         })
-//     }
-// })
-
-
 
 
 // export the router
