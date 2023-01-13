@@ -62,7 +62,7 @@ router.get('/login', (req, res) => {
 })
 
 // POST /users/login -- ingest data from form rendered @ GET /users/login
-// render is ej
+// render is ejs
 router.post('/login', async (req, res) => {
     try {
         // look up the user based on their email

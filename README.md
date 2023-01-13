@@ -39,6 +39,7 @@ dotify is a knockoff version of another popular music app that I can't name for 
 
 ### User Story 
 
+* As a user, I would like to be able to update my password
 * As a user, I would like to be able to see a list full of songs.
 * As a user, I would like to be able to add songs I like to my favorites playlist. 
 
@@ -64,4 +65,4 @@ dotify is a knockoff version of another popular music app that I can't name for 
 
 ### Post reflection 
 
-The amount of stress and confusion going into this project has been a rollercoaster. Going into this project I wasn't very comfortable with what we've learned this unit(FullStack) and was blessed we had a week break which was very needed for me. During the week break, I tried to organize my time and review all the lessons I didn't fully understand and it helped a lot. I had a much better understanding of routes and what the purpose of the folders/files we made have. Of course doing the project, I had many bugs and was very lucky to have amazing classmates to help me with fixing them and being able to answer questions with parts I was confused at. Finishing the project, I think I have a much better understanding of what's going on, of course stil needing reviewing, and feel better in doing another FullStack project. 
+The amount of stress and confusion going into this project has been a rollercoaster. Going into this project I wasn't very comfortable with what we've learned this unit(FullStack) and was blessed we had a week break which was very needed for me. During the week break, I tried to organize my time and review all the lessons I didn't fully understand and it helped a lot. I had a much better understanding of routes and what the purpose of the folders/files we made have. Of course doing the project, I had many bugs and was very lucky to have amazing classmates to help me with fixing them and being able to answer questions with parts I was confused at. Finishing the project, I think I have a much better understanding of what's going on, of course stil need to practice a lot of best practices but, feel much better in doing another FullStack project. 
