@@ -71,6 +71,7 @@ router.post('/login', async (req, res) => {
                 email: req.body.email
             }
         })
+        
         // boilerplate message if login fails
         const badCredentialMessage = 'username or password incorrect'
         if (!user) {

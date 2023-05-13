@@ -3,22 +3,22 @@
 <div>
 <h1>Top 100 Charts</h1>
 <% songs.forEach(function(song) { %>
-  <div class="cards well position-absolute top-0 start-50 translate-middle"></div>
-    <div class="card-image">
-      <img src="<%= song['im:image'][2].label %>" /> 
-    </div>
-    <div class="category"> <%= song['im:name'].label %> </div>
-    <div class="category"> Artist: <%= song['im:artist'].label %> </div>
-    <div class="category"> Genre: <%= song.category.attributes.term %> </div>
-  </div>
-      <h3><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Buy now for <%= song['im:price'].label %> on apple music</a></h3>
-      <form method="POST" action="/favorites">
-        <input autocomplete="off" hidden type="text" name="name" value="<%= song['im:name'].label %>">
-        <input autocomplete="off" hidden type="text" name="genre" value="<%= song.category.attributes.term %>">
-        <button class="btn btn-primary" type="submit">Add to Favorites</button>
-      </form>
+      <div class="card" style="width: 11rem;">
+          <img class="card-img-top" src="<%= song['im:image'][2].label %>" /> 
+        <div class="card-body">
+          <h5 class="card-title"> <%= song['im:name'].label %> </h5>
+          <p class="card-text"> Artist: <%= song['im:artist'].label %> </p>
+          <p class="card-text"> Genre: <%= song.category.attributes.term %> </p>
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-primary">Buy Now $1.29</a>
+          <form method="POST" action="/favorites">
+            <input autocomplete="off" hidden type="text" name="name" value="<%= song['im:name'].label %>">
+            <input autocomplete="off" hidden type="text" name="genre" value="<%= song.category.attributes.term %>">
+            <button class="btn btn-primary" type="submit">Add to Favorites</button>
+          </form>
+        </div> 
+      </div>
 
-    </div>
+
   <% }); %>
 </div>
 

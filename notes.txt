@@ -1,6 +1,8 @@
 sql main thing
 -- has different versions
 
+demo email and pass: v@b vb
+
 
 
 things to remember: 
