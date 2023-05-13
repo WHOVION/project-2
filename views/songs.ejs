@@ -2,7 +2,8 @@
 
 <div>
 <h1>Top 100 Charts</h1>
-<% songs.forEach(function(song) { %>
+    <div class="d-flex align-content-start flex-wrap">
+      <% songs.forEach(function(song) { %>
       <div class="card" style="width: 11rem;">
           <img class="card-img-top" src="<%= song['im:image'][2].label %>" /> 
         <div class="card-body">
@@ -17,9 +18,8 @@
           </form>
         </div> 
       </div>
-
-
-  <% }); %>
+      <% }); %>
+    </div>
 </div>
 
 <%- include('../views/partials/footer.ejs') %>
