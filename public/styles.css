@@ -1,7 +1,7 @@
 
-* {
+/* * {
   border: dotted black 1px;
-}
+} */
 
  body {
   align-items: center;
@@ -12,16 +12,17 @@
  /* card css start */
 
  .card {
-  background-color: darkgreen;
+  background-color: lightgreen;
   border-width: 2px;
+  
  }
 
  .addC {
-  background-color: darkgreen;
+  background-color: lightgreen;
  }
 
  .colorC {
-  color: lightgreen;
+  color: darkgreen;
  }
 
  .borderBC {
@@ -29,3 +30,4 @@
  }
 
  /* card css end */
+
