@@ -2,24 +2,25 @@
 
 <div>
 <h1>Top 100 Charts</h1>
-<% songs.forEach(function(song) { %>
-  <div class="cards well position-absolute top-0 start-50 translate-middle"></div>
-    <div class="card-image">
-      <img src="<%= song['im:image'][2].label %>" /> 
+    <!-- <div class="row row-cols-1 row-cols-md-4 g-4"> -->
+    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+      <% songs.forEach(function(song) { %>
+      <div class="card" style="width: 14rem;">
+          <img class="card-img-top" src="<%= song['im:image'][2].label %>" /> 
+        <div class="card-body">
+          <h5 class="card-title colorC"> <%= song['im:name'].label %> </h5>
+          <p class="card-text colorC"> Artist: <%= song['im:artist'].label %> </p>
+          <p class="card-text colorC"> Genre: <%= song.category.attributes.term %> </p>
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn addT colorC borderBC">Buy Now $1.29</a>
+          <form class="addC" method="POST" action="/favorites">
+            <input autocomplete="off" hidden type="text" name="name" value="<%= song['im:name'].label %>">
+            <input autocomplete="off" hidden type="text" name="genre" value="<%= song.category.attributes.term %>">
+            <button class="btn colorC borderBC" type="submit">Add to Favorites</button>
+          </form>
+        </div> 
+      </div>
+      <% }); %>
     </div>
-    <div class="category"> <%= song['im:name'].label %> </div>
-    <div class="category"> Artist: <%= song['im:artist'].label %> </div>
-    <div class="category"> Genre: <%= song.category.attributes.term %> </div>
-  </div>
-      <h3><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Buy now for <%= song['im:price'].label %> on apple music</a></h3>
-      <form method="POST" action="/favorites">
-        <input autocomplete="off" hidden type="text" name="name" value="<%= song['im:name'].label %>">
-        <input autocomplete="off" hidden type="text" name="genre" value="<%= song.category.attributes.term %>">
-        <button class="btn btn-primary" type="submit">Add to Favorites</button>
-      </form>
-
-    </div>
-  <% }); %>
 </div>
 
 <%- include('../views/partials/footer.ejs') %>

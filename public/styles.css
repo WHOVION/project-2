@@ -1,113 +1,33 @@
-body  {
+
+/* * {
+  border: dotted black 1px;
+} */
+
+ body {
+  align-items: center;
   text-align: center;
-}
+  background-color: darkgrey;
+ }
 
-.card {
-    /* width: 190px; */
-    width: 1900px;
-    height: 254px;
-    /* background: #F4F6FB; */
-    border: 1px solid white;
-    /* box-shadow: 10px 10px 64px 0px rgba(180, 180, 207, 0.75);
-    -webkit-box-shadow: 10px 10px 64px 0px rgba(186, 186, 202, 0.75);
-    -moz-box-shadow: 10px 10px 64px 0px rgba(208, 208, 231, 0.75); */
-  }
-  
-  .form {
-    padding: 25px;
-  } 
-  
-  .card_header {
-    display: flex;
-    align-items: center;
-  }
-  
-  .card svg {
-    color: #7878bd;
-    margin-bottom: 20px;
-    margin-right: 5px;
-  }
-  
-  .form_heading {
-    padding-bottom: 20px;
-    font-size: 21px;
-    color: #7878bd;
-  }
-  
-  .field {
-    padding-bottom: 10px;
-  }
-  
-  .input {
-    text-align: center;
-    border-radius: 5px;
-    background-color: #e9e9f7;
-    padding: 5px;
-    width: 100%;
-    color: #7a7ab3;
-    border: 1px solid #dadaf7
-  }
-  
-  .input:focus-visible {
-    outline: 1px solid #aeaed6;
-  }
-  
-  .input::placeholder {
-    color: #bcbcdf;
-  }
-  
-  label {
-    color: #B2BAC8;
-    font-size: 14px;
-    display: block;
-    padding-bottom: 4px;
-  }
-  
-  button {
-    background-color: #7878bd;
-    margin-top: 10px;
-    font-size: 14px;
-    padding: 7px 12px;
-    height: auto;
-    font-weight: 500;
-    color: white;
-  }
-  
-  button:hover {
-    background-color: #5f5f9c;
-  }
+ /* card css start */
 
-  .cards {
-    width: 190px;
-    height: 300px;
-    background: white;
-    padding: .4em;
-    border-radius: 6px;
-    z-index: -1;
-  }
+ .card {
+  background-color: lightgreen;
+  border-width: 2px;
   
-  .card-image {
-    background-color: rgb(236, 236, 236);
-    width: 100%;
-    height: 60%;
-    border-radius: 6px 6px 0 0;
-  }
-  
-  .card-image:hover {
-    transform: scale(0.98);
-  }
-  
-  .category {
-    text-transform: uppercase;
-    font-size: 15px;
-    font-weight: 600;
-    color: black;
-    padding: 10px 7px 0;
-  }
-  
-  .category:hover {
-    cursor: pointer;
-  }
-  
+ }
 
- 
+ .addC {
+  background-color: lightgreen;
+ }
+
+ .colorC {
+  color: darkgreen;
+ }
+
+ .borderBC {
+  border-color: black;
+ }
+
+ /* card css end */
+
