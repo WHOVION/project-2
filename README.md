@@ -3,6 +3,7 @@
 ### Link to Website
 
 (https://deploy-dotify.herokuapp.com/)
+Demo Account: email: a@s password: as
 
 ### Pitch
 
